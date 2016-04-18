@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hangman!</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<link href="assets/css/reset.css" type="text/css" rel="stylesheet">
+
+	<link href="assets/css/style.css" type="text/css" rel="stylesheet">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+
+
+</head>
+<body>
+<div id="heading">
+	<h1>Hangman: <span id="blue">Movie Edition!</span></h1>
+	<h3>The game the whole family will love.</h3>
+</div>
+<nav class="navbar navbar-default">
+	<div class="container-fluid"></div>
+	<div class="navbar-header">
+		<img src="assets/images/movie_reel.png" alt="Movie Reel">
+	</div>
+
+	<div class="collapse navbar-collapse">
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Games</a></li>
+		</ul>
+	</div>	
+
+</nav>
+
+
+
+<h2 id="title">Press Any key to get started!</h2>
+
+<script>
+
+	var hangman = {
+		wins: 0,
+		losses: 0,
+		guessesLeft: 10,
+		lettersGuessed: [],
+
+		q1: ["Is the first letter of the alphabet 'M'?", "false"],
+		q2: ["Does 'T' stand for true?","true"],
+
+
+		driveAroundWorld: function(){
+
+			alert("Old Mileage: " + this.mileage);
+
+			this.mileage = this.mileage + 24000;
+
+			alert("New Mileage: " + this.mileage);
+			alert("Car needs a tuneup!")
+
+			this.isWorking = false;
+		}
+	}
+
+
+	
+
+	document.onkeyup = function(event){
+
+		var userInput = String.fromCharCode(event.keyCode).toLowerCase();
+
+		if(userInput != null){
+
+			document.getElementById("title").innerHTML = "Clue: Name of a Movie";
+		}
+
+	}
+
+
+</script>
+
+<p class="stats">Wins:</p>
+<p class="stats">Number of Guesses Remaining:</p>
+<p class="stats">Letters Already Guessed:</p>
+	
+</body>
+</html>

@@ -1,0 +1,35 @@
+body {font-family: 'Open Sans', sans-serif !important;}
+
+div#heading {padding: 25px 300px 25px 300px;}
+
+h1 {color: #FF0000;
+	font-family: 'Open Sans', sans-serif !important;
+	font-size: 40px !important;
+	line-height: 45px !important;
+	font-weight: 300 !important;}
+
+h2 {font-size: 20px !important;
+	margin-bottom: 50px !important;}
+
+h2#title {text-align: center;}
+
+h3 {font-size: 15px !important;
+	line-height: 25px !important;
+	font-family: 'Open Sans', sans-serif !important;
+	margin-bottom: 20px;}
+
+span#blue {color: #00AEEF;}
+
+nav {font-family: Arial, sans-serif !important;}
+
+nav .navbar-header {padding: 2px 130px 0 130px;}
+
+nav li {border-left: 1px solid #f2f2f2;
+		border-right: 1px solid #f2f2f2;}
+
+nav li a {color: #00AEEF !important;}
+
+nav li a:hover {color: #FF0000 !important;}
+
+p.stats {font-size: 16px;
+		 margin-left: 50px;}
