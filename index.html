@@ -47,51 +47,13 @@
 
 <h2 id="title">Press Any key to get started!</h2>
 
-<script>
+<p id="dashesHere"></p>
 
-	var hangman = {
-		wins: 0,
-		losses: 0,
-		guessesLeft: 10,
-		lettersGuessed: [],
+<script type="text/javascript" src="assets/javascript/game.js"></script>
 
-		q1: ["Is the first letter of the alphabet 'M'?", "false"],
-		q2: ["Does 'T' stand for true?","true"],
-
-
-		driveAroundWorld: function(){
-
-			alert("Old Mileage: " + this.mileage);
-
-			this.mileage = this.mileage + 24000;
-
-			alert("New Mileage: " + this.mileage);
-			alert("Car needs a tuneup!")
-
-			this.isWorking = false;
-		}
-	}
-
-
-	
-
-	document.onkeyup = function(event){
-
-		var userInput = String.fromCharCode(event.keyCode).toLowerCase();
-
-		if(userInput != null){
-
-			document.getElementById("title").innerHTML = "Clue: Name of a Movie";
-		}
-
-	}
-
-
-</script>
-
-<p class="stats">Wins:</p>
-<p class="stats">Number of Guesses Remaining:</p>
-<p class="stats">Letters Already Guessed:</p>
+<p class="stats">Wins: <span class="actualStat" id="wins"></span></p>
+<p class="stats">Number of Guesses Remaining: <span class="actualStat" id="guess"></span></p>
+<p class="stats">Letters Already Guessed: <span class="actualStat" id="lettersPushed"></span></p>
 	
 </body>
 </html>

@@ -1,0 +1,145 @@
+var executed = false;
+var timesInputCaptured = 0;
+
+var hangman = {
+		wins: 0,
+		losses: 0,
+		guessesLeft: 10,
+		lettersGuessed: [],
+		alphabet: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
+		movies: ["batman vs superman", "forrest gump", "finding nemo", "heaven is for real"],
+
+		checkAlphabet: function(event){
+
+			var isAlpha = this.alphabet.indexOf(event);
+
+			if(isAlpha < 0){
+
+				alert("Invalid input. Please only use characters.");			
+
+			} else {
+
+				this.lettersGuessed.push(event);
+				this.guessesLeft--; 
+				document.getElementById("guess").innerHTML = this.guessesLeft;
+				console.log(this.lettersGuessed);
+				console.log(this.guessesLeft);
+
+				if(this.lettersGuessed.length > 1) {
+
+					document.getElementById("lettersPushed").innerHTML += ", " + event;
+
+				} else {
+
+					document.getElementById("lettersPushed").innerHTML += this.lettersGuessed;
+				}
+
+					
+
+
+			}
+		},
+
+		/*updateWins: function(){
+
+			this.wins
+
+		},*/
+
+		drawDashes: function(movie){
+
+			//for(i=0; this.arr.length; i++){
+
+				//var len = this.movies[num].length;
+				var len = movie.length;
+
+				for(x = 0; x < len; x++){
+
+					/*if(this.movies[num].charAt(x) == 'a' || this.movies[num].charAt(x) == 'b'|| this.movies[num].charAt(x) == 'c'|| this.movies[num].charAt(x) == 'd'|| this.movies[num].charAt(x) == 'e'|| this.movies[num].charAt(x) == 'f'|| this.movies[num].charAt(x) == 'g'|| this.movies[num].charAt(x) == 'h'|| this.movies[num].charAt(x) == 'i'|| this.movies[num].charAt(x) == 'j'|| this.movies[num].charAt(x) == 'k'|| this.movies[num].charAt(x) == 'l'|| this.movies[num].charAt(x) == 'm'|| this.movies[num].charAt(x) == 'n'|| this.movies[num].charAt(x) == 'o'|| this.movies[num].charAt(x) == 'p'|| this.movies[num].charAt(x) == 'q'|| this.movies[num].charAt(x) == 'r'|| this.movies[num].charAt(x) == 's'|| this.movies[num].charAt(x) == 't'|| this.movies[num].charAt(x) == 'u'|| this.movies[num].charAt(x) == 'v'|| this.movies[num].charAt(x) == 'w'|| this.movies[num].charAt(x) == 'x'|| this.movies[num].charAt(x) == 'y'|| this.movies[num].charAt(x) == 'z'){*/
+
+					if(movie.charAt(x) == 'a' || movie.charAt(x) == 'b'|| movie.charAt(x) == 'c'|| movie.charAt(x) == 'd'|| movie.charAt(x) == 'e'|| movie.charAt(x) == 'f'|| movie.charAt(x) == 'g'|| movie.charAt(x) == 'h'|| movie.charAt(x) == 'i'|| movie.charAt(x) == 'j'|| movie.charAt(x) == 'k'|| movie.charAt(x) == 'l'|| movie.charAt(x) == 'm'|| movie.charAt(x) == 'n'|| movie.charAt(x) == 'o'|| movie.charAt(x) == 'p'|| movie.charAt(x) == 'q'|| movie.charAt(x) == 'r'|| movie.charAt(x) == 's'|| movie.charAt(x) == 't'|| movie.charAt(x) == 'u'|| movie.charAt(x) == 'v'|| movie.charAt(x) == 'w'|| movie.charAt(x) == 'x'|| movie.charAt(x) == 'y'|| movie.charAt(x) == 'z'){	
+
+						//document.getElementById("dashesHere").innerHTML += movie.charAt(x);
+						document.getElementById("dashesHere").innerHTML += "<img src=\"assets/images/dash.png\">";
+						document.getElementById("dashesHere").innerHTML += " ";
+
+					} else if(movie.charAt(x) == " "){
+
+						document.getElementById("dashesHere").innerHTML += "&nbsp;&nbsp;&nbsp;";
+
+					}
+				}
+			//}
+
+		},
+
+		startup: function(){
+			document.onkeyup = function(event){
+
+				var initialInput = String.fromCharCode(event.keyCode).toLowerCase();
+
+				if(initialInput != null){
+
+					document.getElementById("title").innerHTML = "<span id=\"bold\">Clue</span>: Name of a Movie";
+					document.getElementById("wins").innerHTML = hangman.wins;
+					document.getElementById("guess").innerHTML = hangman.guessesLeft;
+					//document.getElementById("wins").innerHTML = hangman.;
+
+					var word = hangman.movies[0];
+					hangman.drawDashes(word);
+				}
+
+				return;
+			}
+
+			return;
+		}
+	}
+
+/*
+	do{
+
+		hangman.startup();
+		executed = true;
+		console.log(executed);
+
+	}while(executed == false);
+
+*/
+
+	document.onkeyup = function(event){
+
+		var userInput = String.fromCharCode(event.keyCode).toLowerCase();
+
+			if(userInput != null){
+
+				if(timesInputCaptured > 0){
+
+					hangman.checkAlphabet(userInput);
+				}
+
+				while(executed == false) {
+
+					document.getElementById("title").innerHTML = "<span id=\"bold\">Clue</span>: Name of a Movie";
+					document.getElementById("wins").innerHTML = hangman.wins;
+					document.getElementById("guess").innerHTML = hangman.guessesLeft;
+					//document.getElementById("wins").innerHTML = hangman.;
+
+					var word = hangman.movies[0];
+					hangman.drawDashes(word);
+					console.log("execute 1:" + executed);
+					executed = true;
+					console.log("execute 2:" + executed);
+
+				}
+
+				timesInputCaptured++;
+				console.log(timesInputCaptured);
+			}
+
+
+	}
+
+
+
+
