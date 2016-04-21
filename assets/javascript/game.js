@@ -26,14 +26,7 @@ var hangman = {
 
 				} else {
 
-					
 					this.changeToLetter(event);
-					
-					/*document.getElementById("guess").innerHTML = this.guessesLeft;
-					console.log("letters guessed: " + this.lettersGuessed);
-					console.log(this.guessesLeft);*/
-
-
 				}
 
 			}
@@ -55,22 +48,11 @@ var hangman = {
 
 				if(movie.charAt(x) == 'a' || movie.charAt(x) == 'b'|| movie.charAt(x) == 'c'|| movie.charAt(x) == 'd'|| movie.charAt(x) == 'e'|| movie.charAt(x) == 'f'|| movie.charAt(x) == 'g'|| movie.charAt(x) == 'h'|| movie.charAt(x) == 'i'|| movie.charAt(x) == 'j'|| movie.charAt(x) == 'k'|| movie.charAt(x) == 'l'|| movie.charAt(x) == 'm'|| movie.charAt(x) == 'n'|| movie.charAt(x) == 'o'|| movie.charAt(x) == 'p'|| movie.charAt(x) == 'q'|| movie.charAt(x) == 'r'|| movie.charAt(x) == 's'|| movie.charAt(x) == 't'|| movie.charAt(x) == 'u'|| movie.charAt(x) == 'v'|| movie.charAt(x) == 'w'|| movie.charAt(x) == 'x'|| movie.charAt(x) == 'y'|| movie.charAt(x) == 'z'){	
 
-					/*var newDiv = document.createElement('div');
-					parent.appendChild(newDiv);
-					newDiv.setAttribute("class", "size" + " " + movie.charAt(x));*/
-
-
-					//document.getElementById("dashesHere").innerHTML += "<img src=\"assets/images/dash.png\" class=\""+ movie.charAt(x)+ "\">";
 					document.getElementById("dashesHere").innerHTML += "<img src=\"assets/images/dash2.png\" class=\""+ movie.charAt(x)+ "\">";
+
 					document.getElementById("dashesHere").innerHTML += "<span class=\"hideMe let" + movie.charAt(x) + "\">" + movie.charAt(x) + "</span>";
 
-
-					//document.getElementsByClassName(movie.charAt(x)).innerHTML += "<img src=\"assets/images/dash.png\" class=\""+ movie.charAt(x)+ "\">";
-
-						//this.getElementsByClassName(movie.charAt(x)[x]).innerHTML = "<img src=\"assets/images/dash.png\">";
-
 					document.getElementById("dashesHere").innerHTML += " ";
-					//document.getElementsByClassName(movie.charAt(x)).innerHTML += " ";
 
 				} else if(movie.charAt(x) == " "){
 
@@ -100,17 +82,16 @@ var hangman = {
 			var pics;
 			var letters;
 
-			//if(this.indivMovie.indexOf(event) > -1){
+			
 
 				for(x = 0; x < len; x++){
 
 					console.log("event: " + event);
 					console.log("element: " + this.indivMovie[x]);
 
-					if(this.indivMovie.indexOf(event) > -1/*event == this.indivMovie[x]*/){
+					if(this.indivMovie.indexOf(event) > -1){
 
-						positionFound = this.indivMovie.indexOf(event);
-							//document.getElementsByClassName(event).innerHTML = event;		
+						positionFound = this.indivMovie.indexOf(event);	
 						pics = document.getElementsByClassName(event);
 						letters = document.getElementsByClassName("let" + event);
 
@@ -122,12 +103,16 @@ var hangman = {
 
 						
 						this.indivMovie.splice(positionFound, 1);
-
-
 						console.log(this.indivMovie);
-						break;
-						//replace dash with letter 
+						if(this.indivMovie.length == 0) {
 
+							this.wins++;
+							document.getElementById("wins").innerHTML = this.wins;
+							alert("You win!");
+							console.log("wins: " + this.wins);
+						}	
+
+						break;
 
 					} else {
 
@@ -159,10 +144,7 @@ var hangman = {
 					}
 				}
 
-
-			//}
-
-
+	
 		}
 		/*
 		startup: function(){
@@ -187,17 +169,6 @@ var hangman = {
 			return;
 		}*/
 	}
-
-/*
-	do{
-
-		hangman.startup();
-		executed = true;
-		console.log(executed);
-
-	}while(executed == false);
-
-*/
 
 	document.onkeyup = function(event){
 
