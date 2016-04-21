@@ -50,17 +50,31 @@ var hangman = {
 		drawDashes: function(movie){
 
 			var len = movie.length;
-
+			
 			for(x = 0; x < len; x++){
 
 				if(movie.charAt(x) == 'a' || movie.charAt(x) == 'b'|| movie.charAt(x) == 'c'|| movie.charAt(x) == 'd'|| movie.charAt(x) == 'e'|| movie.charAt(x) == 'f'|| movie.charAt(x) == 'g'|| movie.charAt(x) == 'h'|| movie.charAt(x) == 'i'|| movie.charAt(x) == 'j'|| movie.charAt(x) == 'k'|| movie.charAt(x) == 'l'|| movie.charAt(x) == 'm'|| movie.charAt(x) == 'n'|| movie.charAt(x) == 'o'|| movie.charAt(x) == 'p'|| movie.charAt(x) == 'q'|| movie.charAt(x) == 'r'|| movie.charAt(x) == 's'|| movie.charAt(x) == 't'|| movie.charAt(x) == 'u'|| movie.charAt(x) == 'v'|| movie.charAt(x) == 'w'|| movie.charAt(x) == 'x'|| movie.charAt(x) == 'y'|| movie.charAt(x) == 'z'){	
 
-					document.getElementById("dashesHere").innerHTML += "<img src=\"assets/images/dash.png\" class=\""+ movie.charAt(x)+ "\">";
+					/*var newDiv = document.createElement('div');
+					parent.appendChild(newDiv);
+					newDiv.setAttribute("class", "size" + " " + movie.charAt(x));*/
+
+
+					//document.getElementById("dashesHere").innerHTML += "<img src=\"assets/images/dash.png\" class=\""+ movie.charAt(x)+ "\">";
+					document.getElementById("dashesHere").innerHTML += "<img src=\"assets/images/dash2.png\" class=\""+ movie.charAt(x)+ "\">";
+					document.getElementById("dashesHere").innerHTML += "<span class=\"hideMe let" + movie.charAt(x) + "\">" + movie.charAt(x) + "</span>";
+
+
+					//document.getElementsByClassName(movie.charAt(x)).innerHTML += "<img src=\"assets/images/dash.png\" class=\""+ movie.charAt(x)+ "\">";
+
+						//this.getElementsByClassName(movie.charAt(x)[x]).innerHTML = "<img src=\"assets/images/dash.png\">";
+
 					document.getElementById("dashesHere").innerHTML += " ";
+					//document.getElementsByClassName(movie.charAt(x)).innerHTML += " ";
 
 				} else if(movie.charAt(x) == " "){
 
-					document.getElementById("dashesHere").innerHTML += "&nbsp;&nbsp;&nbsp;";
+					document.getElementsByClassName(movie.charAt(x)).innerHTML += "&nbsp;&nbsp;&nbsp;";
 
 				}
 			}
@@ -68,7 +82,7 @@ var hangman = {
 
 		wordToArray: function(movie){
 
-			var len = movie.length;   //batman vs superman
+			var len = movie.length;  
 
 			for(i = 0; i < len; i++){
 
@@ -80,9 +94,11 @@ var hangman = {
 
 		changeToLetter: function(event){
 
-			var len = this.indivMovie.length;   //spiderman
+			var len = this.indivMovie.length;   
 			var guessPushed = false;
 			var positionFound;
+			var pics;
+			var letters;
 
 			//if(this.indivMovie.indexOf(event) > -1){
 
@@ -94,8 +110,24 @@ var hangman = {
 					if(this.indivMovie.indexOf(event) > -1/*event == this.indivMovie[x]*/){
 
 						positionFound = this.indivMovie.indexOf(event);
-						this.indivMovie.splice(x, 1);
+							//document.getElementsByClassName(event).innerHTML = event;		
+						pics = document.getElementsByClassName(event);
+						letters = document.getElementsByClassName("let" + event);
+
+						for(var x =0; x < pics.length; x++){
+
+							pics[x].setAttribute("class", "hideMe");
+							letters[x].setAttribute("class", "");
+					}
+
+						
+						this.indivMovie.splice(positionFound, 1);
+
+
+						console.log(this.indivMovie);
+						break;
 						//replace dash with letter 
+
 
 					} else {
 

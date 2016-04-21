@@ -34,7 +34,9 @@ nav li a {color: #00AEEF !important;}
 
 nav li a:hover {color: #FF0000 !important;}
 
-p#dashesHere {text-align: center;}
+#dashesHere {text-align: center;}
+
+.hideMe {display: none;}
 
 p.stats {font-size: 16px;
 		 margin-left: 50px;
