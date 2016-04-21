@@ -7,8 +7,9 @@ var hangman = {
 		guessesLeft: 10,
 		lettersGuessed: [],
 		alphabet: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
-		movies: ["spiderman", "forrest gump", "finding nemo", "heaven is for real"],
+		movies: ["spiderman", "xmen", "speed", "prometheus", "flight"/*"forrest gump", "finding nemo", "heaven is for real"*/],
 		indivMovie: [],
+		count: 0,
 
 		checkAlphabet: function(event){
 
@@ -33,12 +34,6 @@ var hangman = {
 
 
 		},
-
-		/*updateWins: function(){
-
-			this.wins
-
-		},*/
 
 		drawDashes: function(movie){
 
@@ -99,7 +94,7 @@ var hangman = {
 
 							pics[x].setAttribute("class", "hideMe");
 							letters[x].setAttribute("class", "");
-					}
+						}
 
 						
 						this.indivMovie.splice(positionFound, 1);
@@ -110,7 +105,9 @@ var hangman = {
 							document.getElementById("wins").innerHTML = this.wins;
 							alert("You win!");
 							console.log("wins: " + this.wins);
-						}	
+							document.getElementById("dashesHere").innerHTML = "";
+							this.runGame();
+						}
 
 						break;
 
@@ -142,37 +139,82 @@ var hangman = {
 							}						
 						}
 					}
+
 				}
 
 	
-		}
-		/*
-		startup: function(){
-			document.onkeyup = function(event){
+		},
 
-				var initialInput = String.fromCharCode(event.keyCode).toLowerCase();
+		runGame: function(){
 
-				if(initialInput != null){
+			var gameStats;
 
-					document.getElementById("title").innerHTML = "<span id=\"bold\">Clue</span>: Name of a Movie";
-					document.getElementById("wins").innerHTML = hangman.wins;
-					document.getElementById("guess").innerHTML = hangman.guessesLeft;
-					//document.getElementById("wins").innerHTML = hangman.;
+			this.count=1+this.count;
 
-					var word = hangman.movies[0];
-					hangman.drawDashes(word);
+			if(this.count == this.movies.length){
+
+
+				gameStats = document.getElementsByClassName("stats");
+				document.getElementById("title").innerHTML = "";
+
+				for(var i =0; i < gameStats.length; i++){
+
+					gameStats[i].innerHTML = "";
 				}
-
-				return;
+				alert("Game over. You're a winner!!");
 			}
 
-			return;
-		}*/
+			var word = hangman.movies[this.count];
+			console.log("The next movie is: " + word);
+			hangman.drawDashes(word);
+			hangman.wordToArray(word);
+
+
+			document.onkeyup = function(event){
+
+				var userInput = String.fromCharCode(event.keyCode).toLowerCase();
+
+
+
+				if(userInput != null){
+
+					hangman.checkAlphabet(userInput);
+						
+				}
+
+			}
+
+				/*while(hangman.wins >= 1){
+
+					for(var count = 1; count < this.movies.length; count++) {
+						var word = hangman.movies[count];
+						hangman.drawDashes(word);
+						hangman.wordToArray(word);
+
+						document.onkeyup = function(event){
+
+							var userInput = String.fromCharCode(event.keyCode).toLowerCase();
+
+								if(userInput != null){
+
+										hangman.checkAlphabet(userInput);
+								}
+						}
+
+					}
+				}*/
+
+		},
+
+		startup: function(){
+			
+		}
 	}
 
 	document.onkeyup = function(event){
 
 		var userInput = String.fromCharCode(event.keyCode).toLowerCase();
+		hangman.count = 0;
 
 			if(userInput != null){
 
@@ -183,24 +225,27 @@ var hangman = {
 
 				while(executed == false) {
 
-					document.getElementById("title").innerHTML = "<span id=\"bold\">Clue</span>: Name of a Movie";
+					document.getElementById("title").innerHTML = "<span id=\"bold\">Title</span>: Name of a Movie";
 					document.getElementById("wins").innerHTML = hangman.wins;
 					document.getElementById("guess").innerHTML = hangman.guessesLeft;
 
 					var word = hangman.movies[0];
 					hangman.drawDashes(word);
 					hangman.wordToArray(word);
-					console.log("execute 1:" + executed);
 					executed = true;
-					console.log("execute 2:" + executed);
-
 				}
 
 				timesInputCaptured++;
 				console.log("times captured: " + timesInputCaptured);
+
+				/*while(hangman.wins >= 1 && count < hangman.movies.length){
+
+
+
+					count++;
+				}*/
+
 			}
-
-
 	}
 
 
